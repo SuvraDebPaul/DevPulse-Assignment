@@ -11,9 +11,22 @@ export const initDB = async () => {
         email VARCHAR(150) UNIQUE NOT NULL,
         password TEXT,
         role  VARCHAR(200),
-        createdAt TIMESTAMP DEFAULT NOW(),
-        updatedAt TIMESTAMP DEFAULT NOW()
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
         )
    `);
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS issues(
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(150) NOT NULL,
+        description TEXT NOT NULL,
+        type VARCHAR(100),
+        status  VARCHAR(100),
+        reporter_id INT UNIQUE REFERENCES users(id) ON DELETE CASCADE,
+        created_at TIMESTAMP DEFAULT NOW(),
+        updated_at TIMESTAMP DEFAULT NOW()
+        )
+    `);
+
   console.log("Databse Connection Successful");
 };
