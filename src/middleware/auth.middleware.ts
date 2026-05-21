@@ -25,6 +25,14 @@ const auth = asyncHandler(
 
     req.user = decode;
 
+    const allowedRoles = ["contributor", "maintainer"];
+    if (!allowedRoles.includes(req.user.role)) {
+      throw new AppError(
+        403,
+        "Only contributors or maintainers can create issues",
+      );
+    }
+
     next();
   },
 );
