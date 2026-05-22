@@ -9,13 +9,7 @@ This project is built using **Node.js**, **TypeScript**, **Express.js**, **Postg
 ## Live URL
 
 ```txt
-Add your deployed backend URL here
-```
-
-Example:
-
-```txt
-https://your-project-name.onrender.com
+https://assignment-2-rouge.vercel.app/
 ```
 
 ---
@@ -63,17 +57,17 @@ https://your-project-name.onrender.com
 
 ## Technology Stack
 
-| Technology | Purpose |
-|---|---|
-| Node.js | Runtime environment |
-| TypeScript | Type-safe JavaScript development |
-| Express.js | Backend web framework |
-| PostgreSQL | Relational database |
-| pg | Native PostgreSQL driver |
-| bcrypt | Password hashing |
-| jsonwebtoken | JWT authentication |
-| dotenv | Environment variable management |
-| tsx | TypeScript development runner |
+| Technology   | Purpose                          |
+| ------------ | -------------------------------- |
+| Node.js      | Runtime environment              |
+| TypeScript   | Type-safe JavaScript development |
+| Express.js   | Backend web framework            |
+| PostgreSQL   | Relational database              |
+| pg           | Native PostgreSQL driver         |
+| bcrypt       | Password hashing                 |
+| jsonwebtoken | JWT authentication               |
+| dotenv       | Environment variable management  |
+| tsx          | TypeScript development runner    |
 
 ---
 
@@ -191,12 +185,12 @@ npm run dev
 
 ## Environment Variables
 
-| Variable | Description |
-|---|---|
-| `PORT` | Server running port |
-| `CONNECTION_STRING` | PostgreSQL database connection string |
-| `JWT_SECRET` | Secret key for signing and verifying JWT tokens |
-| `NODE_ENV` | Application environment, for example `development` |
+| Variable            | Description                                        |
+| ------------------- | -------------------------------------------------- |
+| `PORT`              | Server running port                                |
+| `CONNECTION_STRING` | PostgreSQL database connection string              |
+| `JWT_SECRET`        | Secret key for signing and verifying JWT tokens    |
+| `NODE_ENV`          | Application environment, for example `development` |
 
 ---
 
@@ -224,15 +218,15 @@ This function creates the `users` and `issues` tables if they do not already exi
 
 The `users` table stores registered user information.
 
-| Column | Type | Description |
-|---|---|---|
-| `id` | SERIAL PRIMARY KEY | Unique user ID |
-| `name` | VARCHAR(100) | User full name |
-| `email` | VARCHAR(150) UNIQUE | Unique user email |
-| `password` | TEXT | Hashed password |
-| `role` | VARCHAR(200) | User role |
-| `created_at` | TIMESTAMP | User creation time |
-| `updated_at` | TIMESTAMP | User update time |
+| Column       | Type                | Description        |
+| ------------ | ------------------- | ------------------ |
+| `id`         | SERIAL PRIMARY KEY  | Unique user ID     |
+| `name`       | VARCHAR(100)        | User full name     |
+| `email`      | VARCHAR(150) UNIQUE | Unique user email  |
+| `password`   | TEXT                | Hashed password    |
+| `role`       | VARCHAR(200)        | User role          |
+| `created_at` | TIMESTAMP           | User creation time |
+| `updated_at` | TIMESTAMP           | User update time   |
 
 Table creation query used in the project:
 
@@ -254,16 +248,16 @@ CREATE TABLE IF NOT EXISTS users(
 
 The `issues` table stores bug reports and feature requests.
 
-| Column | Type | Description |
-|---|---|---|
-| `id` | SERIAL PRIMARY KEY | Unique issue ID |
-| `title` | VARCHAR(150) | Issue title |
-| `description` | TEXT | Issue details |
-| `type` | VARCHAR(100) | Issue type |
-| `status` | VARCHAR(100) | Issue workflow status |
-| `reporter_id` | INT | User ID of the issue reporter |
-| `created_at` | TIMESTAMP | Issue creation time |
-| `updated_at` | TIMESTAMP | Issue update time |
+| Column        | Type               | Description                   |
+| ------------- | ------------------ | ----------------------------- |
+| `id`          | SERIAL PRIMARY KEY | Unique issue ID               |
+| `title`       | VARCHAR(150)       | Issue title                   |
+| `description` | TEXT               | Issue details                 |
+| `type`        | VARCHAR(100)       | Issue type                    |
+| `status`      | VARCHAR(100)       | Issue workflow status         |
+| `reporter_id` | INT                | User ID of the issue reporter |
+| `created_at`  | TIMESTAMP          | Issue creation time           |
+| `updated_at`  | TIMESTAMP          | Issue update time             |
 
 Table creation query used in the project:
 
@@ -460,11 +454,11 @@ Access: Public
 
 Supported query parameters:
 
-| Query | Example | Description |
-|---|---|---|
-| `sort` | `?sort=newest` | Sort by newest first |
-| `sort` | `?sort=oldest` | Sort by oldest first |
-| `type` | `?type=bug` | Filter by issue type |
+| Query    | Example        | Description            |
+| -------- | -------------- | ---------------------- |
+| `sort`   | `?sort=newest` | Sort by newest first   |
+| `sort`   | `?sort=oldest` | Sort by oldest first   |
+| `type`   | `?type=bug`    | Filter by issue type   |
 | `status` | `?status=open` | Filter by issue status |
 
 Example:
@@ -701,7 +695,7 @@ This middleware:
 Example usage:
 
 ```ts
-authorizeRoles("contributor", "maintainer")
+authorizeRoles("contributor", "maintainer");
 ```
 
 ### errorHandler.ts
@@ -766,16 +760,16 @@ Example error response:
 
 ## Current Route Summary
 
-| Method | Endpoint | Access | Description |
-|---|---|---|---|
-| GET | `/` | Public | Health check route |
-| POST | `/api/auth/signup` | Public | Register a new user |
-| POST | `/api/auth/login` | Public | Login user and get JWT token |
-| POST | `/api/issues` | Contributor, Maintainer | Create a new issue |
-| GET | `/api/issues` | Public | Get all issues with optional filters |
-| GET | `/api/issues/:id` | Public | Get a single issue by ID |
-| PUT | `/api/issues/:id` | Contributor, Maintainer | Update an issue |
-| DELETE | `/api/issues/:id` | Maintainer | Delete an issue |
+| Method | Endpoint           | Access                  | Description                          |
+| ------ | ------------------ | ----------------------- | ------------------------------------ |
+| GET    | `/`                | Public                  | Health check route                   |
+| POST   | `/api/auth/signup` | Public                  | Register a new user                  |
+| POST   | `/api/auth/login`  | Public                  | Login user and get JWT token         |
+| POST   | `/api/issues`      | Contributor, Maintainer | Create a new issue                   |
+| GET    | `/api/issues`      | Public                  | Get all issues with optional filters |
+| GET    | `/api/issues/:id`  | Public                  | Get a single issue by ID             |
+| PUT    | `/api/issues/:id`  | Contributor, Maintainer | Update an issue                      |
+| DELETE | `/api/issues/:id`  | Maintainer              | Delete an issue                      |
 
 ---
 
