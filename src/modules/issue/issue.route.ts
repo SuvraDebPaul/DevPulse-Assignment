@@ -6,7 +6,19 @@ import { authorizeRoles } from "../../middleware/authorizeRoles";
 const router = Router();
 
 router.get("/", IssueController.getAllIssues);
-
+router.get("/:id", IssueController.getSingleIssue);
+router.put(
+  "/:id",
+  auth,
+  authorizeRoles("contributor", "maintainer"),
+  IssueController.updateSingleIssue,
+);
+router.delete(
+  "/:id",
+  auth,
+  authorizeRoles("maintainer"),
+  IssueController.deleteSingleIssue,
+);
 router.post(
   "/",
   auth,
